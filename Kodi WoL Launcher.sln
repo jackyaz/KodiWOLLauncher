@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kodi WoL Launcher", "Kodi WoL Launcher\Kodi WoL Launcher.csproj", "{A5054032-CB4D-4000-A5FE-52D3B6094D54}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A5054032-CB4D-4000-A5FE-52D3B6094D54}.Debug|x86.ActiveCfg = Release|x86
+		{A5054032-CB4D-4000-A5FE-52D3B6094D54}.Debug|x86.Build.0 = Release|x86
+		{A5054032-CB4D-4000-A5FE-52D3B6094D54}.Release|x86.ActiveCfg = Release|x86
+		{A5054032-CB4D-4000-A5FE-52D3B6094D54}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

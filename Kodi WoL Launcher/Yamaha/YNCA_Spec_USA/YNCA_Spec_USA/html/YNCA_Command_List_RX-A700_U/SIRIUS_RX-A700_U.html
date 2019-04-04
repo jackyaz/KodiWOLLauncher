@@ -1,0 +1,266 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="en">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<link rel="stylesheet" type="text/css" href="../css/ss.css">
+<title>YNCA Command List Ver. 3.00 for RX-A700_U</title>
+</head>
+<body bgcolor="#ffffff" text="#000000">
+<div id="copy">&copy; 2010 Yamaha Corporation All Rights Reserved.</div>
+<div class="toptitle">Sub Unit : SIRIUS</div>
+<div class="version">Function Tree version: 3.00</div>
+<div class="version">Model: RX-A700</div>
+<div class="version">Product Region: USA</div>
+<div class="version">$Date: 2010-08-18 22:02:12 +0900 (水, 18 8 2010) $</div>
+<div class="version">$Revision: 7747 $</div>
+<hr>
+<div class ="title">Command Index</div>
+<ol type="1" start="1">
+    <li class="title">Information</li>
+        <div class="norm"><a href="#SIGINFO" name="CatIdxSIGINFO">SIGINFO</a></div>
+        <div class="norm"><a href="#METAINFO" name="CatIdxMETAINFO">METAINFO</a></div>
+    <li class="title">Play Control</li>
+        <div class="norm"><a href="#SEARCHMODE" name="CatIdxSEARCHMODE">SEARCHMODE</a></div>
+        <div class="norm"><a href="#PRESET" name="CatIdxPRESET">PRESET</a></div>
+        <div class="norm"><a href="#MEM" name="CatIdxMEM">MEM</a></div>
+        <div class="norm"><a href="#CATSEL" name="CatIdxCATSEL">CATSEL</a></div>
+        <div class="norm"><a href="#CHSEL" name="CatIdxCHSEL">CHSEL</a></div>
+    <li class="title">Others</li>
+        <div class="norm"><a href="#AVAIL" name="CatIdxAVAIL">AVAIL</a></div>
+        <div class="norm"><a href="#ANTLVL" name="CatIdxANTLVL">ANTLVL</a></div>
+        <div class="norm"><a href="#CATNAME" name="CatIdxCATNAME">CATNAME</a></div>
+        <div class="norm"><a href="#CHNUM" name="CatIdxCHNUM">CHNUM</a></div>
+        <div class="norm"><a href="#CHNAME" name="CatIdxCHNAME">CHNAME</a></div>
+        <div class="norm"><a href="#ARTIST" name="CatIdxARTIST">ARTIST</a></div>
+        <div class="norm"><a href="#SONG" name="CatIdxSONG">SONG</a></div>
+        <div class="norm"><a href="#COMPOSER" name="CatIdxCOMPOSER">COMPOSER</a></div>
+        <div class="norm"><a href="#PLOCK" name="CatIdxPLOCK">PLOCK</a></div>
+</ol><hr>
+<div class="title">Command Details of SubUnit: SIRIUS</div>
+<ul type="disc">
+<li>
+<div class="itemtitle"><a name="AVAIL">AVAIL</a></div>
+<dl>
+<dt><span class="itemtitle">[GET Command]</span><dt>
+<dd><div class="cmd">@SIRIUS:AVAIL=?</div></dd>
+<dd><div class="description">Retrieving the connection state of SiriusConnect tuner (adapter) or the validity of its operational status</div></dd>
+<dd><div class="iaf">Initial Auto Feedback is Available</div><dd>
+<dt><div class="itemtitle">[Parameters]</div></dt>
+<dd><div class="param">Not Connected</div></dd>
+<dd><div class="description">GET Only: indicating the adapter is not connected.</div></dd>
+<dd><div class="param">Not Ready</div></dd>
+<dd><div class="description">GET Only: indicating invalid state of operation</div></dd>
+<dd><div class="notes">All feedback are invalid (its validity is not guaranteed) even though there are when "Not Ready" status.</div></dd>
+<dd><div class="param">Ready</div></dd>
+<dd><div class="description">GET Only: indicating valid state of operation</div></dd>
+<div class="backlink"><a href="#CatIdxAVAIL">Back To Index</a></div>
+</dl></li>
+<li>
+<div class="itemtitle"><a name="SEARCHMODE">SEARCHMODE</a></div>
+<dl>
+<dt><span class="itemtitle">[PUT Command]</span></dt>
+<dd><div class="cmd">@SIRIUS:SEARCHMODE=<span class="exparam">Parameter</span></div></dd>
+<dt><span class="itemtitle">[GET Command]</span><dt>
+<dd><div class="cmd">@SIRIUS:SEARCHMODE=?</div></dd>
+<dd><div class="description">Operating & retrieving Search Mode state.</div></dd>
+<dd><div class="iaf">Initial Auto Feedback is Available</div><dd>
+<dt><div class="itemtitle">[Parameters]</div></dt>
+<dd><div class="param">All Ch</div></dd>
+<dd><div class="description">PUT: selecting All Ch search mode / GET: indicating current search mode is All Ch</div></dd>
+<dd><div class="param">Category</div></dd>
+<dd><div class="description">PUT: selecting Category search mode / GET: indicating current search mode is Category</div></dd>
+<dd><div class="param">Preset</div></dd>
+<dd><div class="description">PUT: selecting Preset search mode / GET: indicating current search mode is Preset</div></dd>
+<div class="backlink"><a href="#CatIdxSEARCHMODE">Back To Index</a></div>
+</dl></li>
+<li>
+<div class="itemtitle"><a name="PRESET">PRESET</a></div>
+<dl>
+<dt><span class="itemtitle">[PUT Command]</span></dt>
+<dd><div class="cmd">@SIRIUS:PRESET=<span class="exparam">Parameter</span></div></dd>
+<dt><span class="itemtitle">[GET Command]</span><dt>
+<dd><div class="cmd">@SIRIUS:PRESET=?</div></dd>
+<dd><div class="description">Operating & retrieving Preset state.</div></dd>
+<dd><div class="iaf">Initial Auto Feedback is Available</div><dd>
+<dt><div class="itemtitle">[Parameters]</div></dt>
+<dd><div class="param">No Preset</div></dd>
+<dd><div class="description">GET Only: indicating there is no preset registered yet.</div></dd>
+<dd><div class="param">Numerical Number: 1 to 40, Step: 1</div></dd>
+<dd><div class="description">PUT: recalling specified number of preset bank. / GET: indicating the preset number currently selected.</div></dd>
+<dd><div class="notes">If no station is yet registered in the recalled number, nothing happens.</div></dd>
+<dd><div class="param">Down</div></dd>
+<dd><div class="description">PUT Only: selecting the nearest available number to the current one in the way of larger number to smaller.</div></dd>
+<dd><div class="param">Up</div></dd>
+<dd><div class="description">PUT Only: selecting the nearest available number to the current one in the way of smaller number to larger.</div></dd>
+<div class="backlink"><a href="#CatIdxPRESET">Back To Index</a></div>
+</dl></li>
+<li>
+<div class="itemtitle"><a name="MEM">MEM</a></div>
+<dl>
+<dt><span class="itemtitle">[PUT Command]</span></dt>
+<dd><div class="cmd">@SIRIUS:MEM=<span class="exparam">Parameter</span></div></dd>
+<dd><div class="description">Registering current channel to a preset bank</div></dd>
+<dt><div class="itemtitle">[Parameters]</div></dt>
+<dd><div class="param">Auto</div></dd>
+<dd><div class="description">PUT Only: registering to a preset bank with automatically specifying the number.</div></dd>
+<dd><div class="notes">Empty (not regisitered) preset banks are used first.</div></dd>
+<dd><div class="param">Numerical Number: 1 to 40, Step: 1</div></dd>
+<dd><div class="description">PUT Only: registering to a preset bank of the number specified.</div></dd>
+<div class="backlink"><a href="#CatIdxMEM">Back To Index</a></div>
+</dl></li>
+<li>
+<div class="itemtitle"><a name="CATSEL">CATSEL</a></div>
+<dl>
+<dt><span class="itemtitle">[PUT Command]</span></dt>
+<dd><div class="cmd">@SIRIUS:CATSEL=<span class="exparam">Parameter</span></div></dd>
+<dd><div class="description">Operating Category selection.</div></dd>
+<dt><div class="itemtitle">[Parameters]</div></dt>
+<dd><div class="param">Down</div></dd>
+<dd><div class="description">PUT Only: selecting in the reverse order</div></dd>
+<dd><div class="param">Up</div></dd>
+<dd><div class="description">PUT Only: selectiing in order</div></dd>
+<div class="backlink"><a href="#CatIdxCATSEL">Back To Index</a></div>
+</dl></li>
+<li>
+<div class="itemtitle"><a name="CHSEL">CHSEL</a></div>
+<dl>
+<dt><span class="itemtitle">[PUT Command]</span></dt>
+<dd><div class="cmd">@SIRIUS:CHSEL=<span class="exparam">Parameter</span></div></dd>
+<dt><span class="itemtitle">[GET Command]</span><dt>
+<dd><div class="cmd">@SIRIUS:CHSEL=?</div></dd>
+<dd><div class="description">Operating & retrieving Channel Number selection</div></dd>
+<dt><div class="itemtitle">[Parameters]</div></dt>
+<dd><div class="param">Numerical Number: 0 to 223, Step: 1</div></dd>
+<dd><div class="description">PUT: changing to the specified number. / GET: indicating current selection</div></dd>
+<dd><div class="param">255</div></dd>
+<dd><div class="description">PUT: doing nothing / GET: indicating "not connected to the adapter" or "no station is received"</div></dd>
+<dd><div class="param">Down</div></dd>
+<dd><div class="description">PUT Only: selecting the nearest available number to the current one in the way of larger number to smaller.</div></dd>
+<dd><div class="param">Up</div></dd>
+<dd><div class="description">PUT Only: selecting the nearest available number to the current one in the way of smaller number to larger.</div></dd>
+<div class="backlink"><a href="#CatIdxCHSEL">Back To Index</a></div>
+</dl></li>
+<li>
+<div class="itemtitle"><a name="SIGINFO">SIGINFO</a></div>
+<dl>
+<dt><span class="itemtitle">[GET Command]</span><dt>
+<dd><div class="cmd">@SIRIUS:SIGINFO=?</div></dd>
+<dd><div class="description">GET Only. Signal status can be retrieved at a time.</div></dd>
+<dd><div class="notes">Updated by following command: "@SIRIUS:ANTLVL" only</div></dd>
+<div class="backlink"><a href="#CatIdxSIGINFO">Back To Index</a></div>
+</dl></li>
+<li>
+<div class="itemtitle"><a name="ANTLVL">ANTLVL</a></div>
+<dl>
+<dt><span class="itemtitle">[GET Command]</span><dt>
+<dd><div class="cmd">@SIRIUS:ANTLVL=?</div></dd>
+<dd><div class="description">Retrieving the signal strength state at the antenna.</div></dd>
+<dd><div class="iaf">Initial Auto Feedback is Available</div><dd>
+<dt><div class="itemtitle">[Parameters]</div></dt>
+<dd><div class="param">No Signal</div></dd>
+<dd><div class="description">GET Only: indicating its status is No Signal</div></dd>
+<dd><div class="param">Weak</div></dd>
+<dd><div class="description">GET Only: indicating its status is Weak</div></dd>
+<dd><div class="param">Good</div></dd>
+<dd><div class="description">GET Only: indicating its status is Good</div></dd>
+<dd><div class="param">Excellent</div></dd>
+<dd><div class="description">GET Only: indicating its status is Excellent</div></dd>
+<div class="backlink"><a href="#CatIdxANTLVL">Back To Index</a></div>
+</dl></li>
+<li>
+<div class="itemtitle"><a name="METAINFO">METAINFO</a></div>
+<dl>
+<dt><span class="itemtitle">[GET Command]</span><dt>
+<dd><div class="cmd">@SIRIUS:METAINFO=?</div></dd>
+<dd><div class="description">GET Only. Meta Info can be retrieved at a time.</div></dd>
+<dd><div class="notes">Updated by following commands: "@SIRIUS:CATNAME", "@SIRIUS:CHNUM", "@SIRIUS:CHNAME", "@SIRIUS:ARTIST", "@SIRIUS:SONG" and "@SIRIUS:COMPOSER"</div></dd>
+<div class="backlink"><a href="#CatIdxMETAINFO">Back To Index</a></div>
+</dl></li>
+<li>
+<div class="itemtitle"><a name="CATNAME">CATNAME</a></div>
+<dl>
+<dt><span class="itemtitle">[GET Command]</span><dt>
+<dd><div class="cmd">@SIRIUS:CATNAME=?</div></dd>
+<dd><div class="description">Retrieving Category Name</div></dd>
+<dd><div class="iaf">Initial Auto Feedback is Available</div><dd>
+<dt><div class="itemtitle">[Parameters]</div></dt>
+<dd><div class="param">Characeter Code: Mixed (could be ASCII, Latin-1 or UTF-8 encoding), Variable Byte Length (0 to 16 bytes)</div></dd>
+<dd><div class="description">GET Only</div></dd>
+<div class="backlink"><a href="#CatIdxCATNAME">Back To Index</a></div>
+</dl></li>
+<li>
+<div class="itemtitle"><a name="CHNUM">CHNUM</a></div>
+<dl>
+<dt><span class="itemtitle">[GET Command]</span><dt>
+<dd><div class="cmd">@SIRIUS:CHNUM=?</div></dd>
+<dd><div class="description">Retrieving Channel Number</div></dd>
+<dd><div class="iaf">Initial Auto Feedback is Available</div><dd>
+<dt><div class="itemtitle">[Parameters]</div></dt>
+<dd><div class="param">Numerical Number: 0 to 255, Step: 1</div></dd>
+<dd><div class="description">GET Only</div></dd>
+<div class="backlink"><a href="#CatIdxCHNUM">Back To Index</a></div>
+</dl></li>
+<li>
+<div class="itemtitle"><a name="CHNAME">CHNAME</a></div>
+<dl>
+<dt><span class="itemtitle">[GET Command]</span><dt>
+<dd><div class="cmd">@SIRIUS:CHNAME=?</div></dd>
+<dd><div class="description">Retrieving Channel Name</div></dd>
+<dd><div class="iaf">Initial Auto Feedback is Available</div><dd>
+<dt><div class="itemtitle">[Parameters]</div></dt>
+<dd><div class="param">Characeter Code: Mixed (could be ASCII, Latin-1 or UTF-8 encoding), Variable Byte Length (0 to 64 bytes)</div></dd>
+<dd><div class="description">GET Only</div></dd>
+<div class="backlink"><a href="#CatIdxCHNAME">Back To Index</a></div>
+</dl></li>
+<li>
+<div class="itemtitle"><a name="ARTIST">ARTIST</a></div>
+<dl>
+<dt><span class="itemtitle">[GET Command]</span><dt>
+<dd><div class="cmd">@SIRIUS:ARTIST=?</div></dd>
+<dd><div class="description">Retrieving Artist Name</div></dd>
+<dd><div class="iaf">Initial Auto Feedback is Available</div><dd>
+<dt><div class="itemtitle">[Parameters]</div></dt>
+<dd><div class="param">Parameters are the same as <a href="#CHNAME">CHNAME</a></div></dd>
+<div class="backlink"><a href="#CatIdxARTIST">Back To Index</a></div>
+</dl></li>
+<li>
+<div class="itemtitle"><a name="SONG">SONG</a></div>
+<dl>
+<dt><span class="itemtitle">[GET Command]</span><dt>
+<dd><div class="cmd">@SIRIUS:SONG=?</div></dd>
+<dd><div class="description">Retrieving Song Title</div></dd>
+<dd><div class="iaf">Initial Auto Feedback is Available</div><dd>
+<dt><div class="itemtitle">[Parameters]</div></dt>
+<dd><div class="param">Parameters are the same as <a href="#CHNAME">CHNAME</a></div></dd>
+<div class="backlink"><a href="#CatIdxSONG">Back To Index</a></div>
+</dl></li>
+<li>
+<div class="itemtitle"><a name="COMPOSER">COMPOSER</a></div>
+<dl>
+<dt><span class="itemtitle">[GET Command]</span><dt>
+<dd><div class="cmd">@SIRIUS:COMPOSER=?</div></dd>
+<dd><div class="description">Retrieving Composer Name</div></dd>
+<dd><div class="iaf">Initial Auto Feedback is Available</div><dd>
+<dt><div class="itemtitle">[Parameters]</div></dt>
+<dd><div class="param">Parameters are the same as <a href="#CHNAME">CHNAME</a></div></dd>
+<div class="backlink"><a href="#CatIdxCOMPOSER">Back To Index</a></div>
+</dl></li>
+<li>
+<div class="itemtitle"><a name="PLOCK">PLOCK</a></div>
+<dl>
+<dt><span class="itemtitle">[GET Command]</span><dt>
+<dd><div class="cmd">@SIRIUS:PLOCK=?</div></dd>
+<dd><div class="description">Retrieving the state of Parental Lock</div></dd>
+<dd><div class="iaf">Initial Auto Feedback is Available</div><dd>
+<dt><div class="itemtitle">[Parameters]</div></dt>
+<dd><div class="param">Locked</div></dd>
+<dd><div class="description">GET Only: indicating its status is Locked</div></dd>
+<dd><div class="param">Unlocked</div></dd>
+<dd><div class="description">GET Only: indicating its status is Unlocked</div></dd>
+<div class="backlink"><a href="#CatIdxPLOCK">Back To Index</a></div>
+</dl></li>
+</ul>
+<p>
+<div id="copy">&copy; 2010 Yamaha Corporation All Rights Reserved.</div>
+</body>
+</html>

@@ -1,0 +1,397 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="en">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<link rel="stylesheet" type="text/css" href="../css/ss.css">
+<title>YNCA Protocol Specification</title>
+<!-- for future use
+<script type="text/javascript" src="script.js">
+</script>
+-->
+</head>
+<body bgcolor="#ffffff" text="#000000" link="#0000ff" alink="#ff0000" vlink="#800080">
+<div id="copy">&copy; 2010 Yamaha Corporation All Rights Reserved.</div>
+<div class="toptitle">YNCA Protocol Specification</div>
+<div class="version">Applicable Models: RX-A700, RX-A800, RX-A1000, RX-A2000, RX-A3000 and RX-V867</div>
+<div class="version">Product Region: USA</div>
+<div class="version">$Date: 2010-08-18 22:02:12 +0900 (水, 18 8 2010) $</div>
+<div class="version">$Revision: 7747 $</div>
+<hr>
+<div class="nocontentmargin_s">&nbsp;</div>
+<div class ="title">Table of Contents</div>
+<ul>
+    <li class="toclist"><div class="norm"><a href="#1" name="Toc1">1 Preface</a></div></li>
+	<div class="tocmargin"></div>
+		<ul>
+        <li class="toclist"><div class="norm"><a href="#1.1" name="Toc1.1">1.1 Applicable Models</a></div></li>
+		<div class="tocmargin"></div>
+        <li class="toclist"><div class="norm"><a href="#1.2" name="Toc1.2">1.2 Outline</a></div></li>
+		<div class="tocmargin"></div>
+        <li class="toclist"><div class="norm"><a href="#1.3" name="Toc1.3">1.3 Features</a></div></li>
+		<div class="tocmargin"></div>
+		</ul>
+	<div class="tocmargin_l"></div>
+    <li class="toclist"><div class="norm"><a href="#2" name="Toc2">2 Connections</a></div></li>
+	<div class="tocmargin"></div>
+		<ul>
+        <li class="toclist"><div class="norm"><a href="#2.1" name="Toc2.1">2.1 RS-232C</a></div></li>
+		<div class="tocmargin"></div>
+			<ul>
+	        <li class="toclist"><div class="norm"><a href="#2.1.1" name="Toc2.1.1">2.1.1 Connection</a></div></li>
+			<div class="tocmargin"></div>
+	        <li class="toclist"><div class="norm"><a href="#2.1.2" name="Toc2.1.2">2.1.2 Port Settings</a></div></li>
+			<div class="tocmargin"></div>
+			</ul>
+        <li class="toclist"><div class="norm"><a href="#2.2" name="Toc2.2">2.2 Ethernet</a></div></li>
+		<div class="tocmargin"></div>
+			<ul>
+	        <li class="toclist"><div class="norm"><a href="#2.2.1" name="Toc2.2.1">2.2.1 Connection</a></div></li>
+			<div class="tocmargin"></div>
+	        <li class="toclist"><div class="norm"><a href="#2.2.2" name="Toc2.2.2">2.2.2 Port Settings</a></div></li>
+			<div class="tocmargin"></div>
+			</ul>
+		</ul>
+	<div class="tocmargin_l"></div>
+    <li class="toclist"><div class="norm"><a href="#3" name="Toc3">3 Protocols</a></div></li>
+	<div class="tocmargin"></div>
+		<ul>
+        <li class="toclist"><div class="norm"><a href="#3.1" name="Toc3.1">3.1 Syntax</a></div></li>
+		<div class="tocmargin"></div>
+        <li class="toclist"><div class="norm"><a href="#3.2" name="Toc3.2">3.2 Command Types (from the Controller)</a></div></li>
+		<div class="tocmargin"></div>
+			<ul>
+	        <li class="toclist"><div class="norm"><a href="#3.2.1" name="Toc3.2.1">3.2.1 PUT command</a></div></li>
+			<div class="tocmargin"></div>
+	        <li class="toclist"><div class="norm"><a href="#3.2.2" name="Toc3.2.2">3.2.2 GET command</a></div></li>
+			<div class="tocmargin"></div>
+			</ul>
+        <li class="toclist"><div class="norm"><a href="#3.3" name="Toc3.3">3.3 Response Types (from the Product)</a></div></li>
+		<div class="tocmargin"></div>
+			<ul>
+	        <li class="toclist"><div class="norm"><a href="#3.3.1" name="Toc3.3.1">3.3.1 Normal Response (to GET commands)</a></div></li>
+			<div class="tocmargin"></div>
+	        <li class="toclist"><div class="norm"><a href="#3.3.2" name="Toc3.3.2">3.3.2 Auto Feedback Response</a></div></li>
+			<div class="tocmargin"></div>
+	        <li class="toclist"><div class="norm"><a href="#3.3.3" name="Toc3.3.3">3.3.3 Error Responses</a></div></li>
+			<div class="tocmargin"></div>
+			</ul>
+		</ul>
+	<div class="tocmargin_l"></div>
+    <li class="toclist"><div class="norm"><a href="#4" name="Toc4">4 Other Rules</a></div></li>
+	<div class="tocmargin"></div>
+		<ul>
+        <li class="toclist"><div class="norm"><a href="#4.1" name="Toc4.1">4.1 For RS-232C control</a></div></li>
+		<div class="tocmargin"></div>
+			<ul>
+	        <li class="toclist"><div class="norm"><a href="#4.1.1" name="Toc4.1.1">4.1.1 Command Interval</a></div></li>
+			<div class="tocmargin"></div>
+			</ul>
+        <li class="toclist"><div class="norm"><a href="#4.2" name="Toc4.2">4.2 For Ethernet control</a></div></li>
+		<div class="tocmargin"></div>
+			<ul>
+	        <li class="toclist"><div class="norm"><a href="#4.2.1" name="Toc4.2.1">4.2.1 Command Interval</a></div></li>
+			<div class="tocmargin"></div>
+	        <li class="toclist"><div class="norm"><a href="#4.2.2" name="Toc4.2.2">4.2.2 Connection & Disconnection</a></div></li>
+			<div class="tocmargin"></div>
+	        <li class="toclist"><div class="norm"><a href="#4.2.3" name="Toc4.2.3">4.2.3 Port Number Change</a></div></li>
+			<div class="tocmargin"></div>
+	        <li class="toclist"><div class="norm"><a href="#4.2.4" name="Toc4.2.4">4.2.4 MAC address filter</a></div></li>
+			<div class="tocmargin"></div>
+			</ul>
+		</ul>
+	<div class="tocmargin_l"></div>
+    <li class="toclist"><div class="norm"><a href="#5" name="Toc5">5 Appendix</a></div></li>
+	<div class="tocmargin"></div>
+		<ul>
+        <li class="toclist"><div class="norm"><a href="#5.1" name="Toc5.1">5.1 Use of IR codes</a></div></li>
+		<div class="tocmargin"></div>
+        <li class="toclist"><div class="norm"><a href="#5.2" name="Toc5.2">5.2 Example Sequences</a></div></li>
+		<div class="tocmargin"></div>
+		</ul>
+</ul>
+<div class="nocontentmargin_s">&nbsp;</div>
+<hr>
+<ul></ul>
+<div class="nocontentmargin">&nbsp;</div>
+
+<span class="index1title"><a name="1">1 Preface</a></span><span class="index1backlink">(<a href="#Toc1">Back To Index</a>)</span>
+<div class="index1content">This document describes the specifications of Yamaha Network Command Alias (YNCA) protocol.</div>
+
+	<span class="index2title"><a name="1.1">1.1 Applicable Models</a></span><span class="index2backlink">(<a href="#Toc1.1">Back To Index</a>)</span>
+	<div class="index2content">As of July 2010, this document is applicable with Yamaha AV Receivers of RX-A700, RX-A800, RX-A1000, RX-A2000, RX-A3000 and RX-V867.</div>
+
+	<span class="index2title"><a name="1.2">1.2 Outline</a></span><span class="index2backlink">(<a href="#Toc1.2">Back To Index</a>)</span>
+	<div class="index2content">YNCA protocol is designed to provide a simple structure of controlling commands for Yamaha AV products. The "YNCA" derives from the fact that all its commands are the aliases of YNC (Yamaha Network Command) protocol.</div>
+	<div class="index2content">YNCA command set is a reduced one of YNC’s but still offering powerful functionalities for operating Yamaha AV products.</div>
+
+	<span class="index2title"><a name="1.3">1.3 Features</a></span><span class="index2backlink">(<a href="#Toc1.3">Back To Index</a>)</span>
+	<div class="index2list">- Text based, simple and well-unified commands</div>
+	<div class="index2list">- Same syntaxes with any connections: RS-232C and Ethernet</div>
+	<div class="index2list">- Auto feedback for status updates</div>
+
+<div class="nocontentmargin_s">&nbsp;</div>
+<ul></ul>
+<hr>
+<ul></ul>
+<div class="nocontentmargin">&nbsp;</div>
+
+<div><span class="index1title"><a name="2">2 Connections</a></span><span class="index1backlink">(<a href="#Toc2">Back To Index</a>)</span></div>
+<div class="nocontentmargin"></div>
+
+	<div><span class="index2title"><a name="2.1">2.1 RS-232C</a></span><span class="index2backlink">(<a href="#Toc2.1">Back To Index</a>)</span></div>
+	<div class="nocontentmargin"></div>
+
+		<span class="index3title"><a name="2.1.1">2.1.1 Connection</a></span><span class="index3backlink">(<a href="#Toc2.1.1">Back To Index</a>)</span>
+		<div class="index3list">- DB-9 pin female terminal</div>
+		<div class="index3list">- Using Inter-link (Cross) cable is assumed</div>
+		<div class="index3list">- Actual contacts that are used for the communication are as shown below.</div>
+		<table class="index3invisible_afterlist">
+			<tr><th class="textcenter">Slave (the Product)</th><td></td><th></th><td></td><th class="textcenter">Master (the Controller)</th></tr>
+			<tr><td class="textcenter">TxD (Pin 3)</td><td></td><td class="textcenter">----&gt;</td><td></td><td class="textcenter">RxD (Pin 2)</td></tr>
+			<tr><td class="textcenter">RxD (Pin 2)</td><td></td><td class="textcenter">&lt;----</td><td></td><td class="textcenter">TxD (Pin 3)</td></tr>
+			<tr><td class="textcenter">GND (Pin 5)</td><td></td><td class="textcenter">&lt;---&gt;</td><td></td><td class="textcenter">GND (Pin 5)</td></tr>
+		</table>
+
+		<span class="index3title"><a name="2.1.2">2.1.2 Port Settings</a></span><span class="index3backlink">(<a href="#Toc2.1.2">Back To Index</a>)</span>
+		<table class="index3invisible">
+			<tr><td>Baud rate</td><td>:</td><td></td><td></td><td>9600</td></tr>
+			<tr><td>Data bits</td><td>:</td><td></td><td></td><td>8</td></tr>
+			<tr><td>Parity</td><td>:</td><td></td><td></td><td>No</td></tr>
+			<tr><td>Stop bit</td><td>:</td><td></td><td></td><td>1 bit</td></tr>
+			<tr><td>Handshaking</td><td>:</td><td></td><td></td><td>None</td></tr>
+			<tr><td colspan="5"></td><tr>
+		</table>
+
+	<div><span class="index2title"><a name="2.2">2.2 Ethernet</a></span><span class="index2backlink">(<a href="#Toc2.2">Back To Index</a>)</span></div>
+	<div class="nocontentmargin"></div>
+		<span class="index3title"><a name="2.2.1">2.2.1 Connection</a></span><span class="index3backlink">(<a href="#Toc2.2.1">Back To Index</a>)</span>
+		<div class="index3list">- RJ45 Network connector</div>
+		<div class="index3list">- IEEE802.3 100BASE-TX/10BASE-T</div>
+		<div class="index3list">- Full duplex communication</div>
+		<div class="nocontentmargin_s">&nbsp;</div>
+		<span class="index3title"><a name="2.2.2">2.2.2 Port Settings</a></span><span class="index3backlink">(<a href="#Toc2.2.2">Back To Index</a>)</span>
+		<table class="index3invisible">
+			<tr><td>Default network port number</td><td>:</td><td></td><td></td><td>50000/TCP</td></tr>
+			<tr><td>Variable range</td><td>:</td><td></td><td></td><td>50000 to 65535</td></tr>
+		</table>
+		<div class="index3notes">Port setting can be changed by YNCA or YNC command only. See <a href="#4.2.3">4.2.3 Port Number Change</a> for details.</div>
+
+<div class="nocontentmargin_s">&nbsp;</div>
+<ul></ul>
+<hr>
+<ul></ul>
+<div class="nocontentmargin">&nbsp;</div>
+
+<span class="index1title"><a name="3">3 Protocols</a></span><span class="index1backlink">(<a href="#Toc3">Back To Index</a>)</span>
+<div class="index1content">YNCA protocol is created to provide simple command structure by assigning alias commands to YNC protocol.</div>
+
+	<span class="index2title"><a name="3.1">3.1 Syntax</a></span><span class="index2backlink">(<a href="#Toc3.1">Back To Index</a>)</span>
+	<div class="index2content">This syntax form shown below must always be kept in both executing commands and getting responses except in case of <a href="#3.3.3">Error Responses</a>.</div>
+	<table class="index2invisible">
+		<tr><td class="syntax">@</td><td class="syntax">SUBUNIT</td><td class="syntax">:</td><td class="syntax">FUNCNAME</td><td class="syntax">=</td><td class="syntax">Parameter</td><td class="syntax">[CR/LF]</td></tr>
+		<tr><td class="syntaxnum">[1]</td><td class="syntaxnum">[2]</td><td class="syntaxnum">[3]</td><td class="syntaxnum">[4]</td><td class="syntaxnum">[5]</td><td class="syntaxnum">[6]</td><td class="syntaxnum">[7]</td></tr>
+	</table>
+	<table class="index2invisible">
+		<tr><td class="verttop">[1]</td><td nowrap class="verttop">Start Delimiter (@)</td><td class="verttop">:</td><td class="verttop">The beginning of a command</td></tr>
+		<tr><td class="verttop">[2]</td><td nowrap class="verttop">Sub Unit Name</td><td class="verttop">:</td><td class="verttop">Indicating whether the command is for System, any zones or any internal input sources as iPod, Tuner, Sirius, and Rhapsody etc</td></tr>
+		<tr><td class="verttop">[3]</td><td nowrap class="verttop">Command Delimiter (:)</td><td class="verttop">:</td><td class="verttop">Sub Unit Name and Function name are separated by this delimiter</td></tr>
+		<tr><td class="verttop">[4]</td><td nowrap class="verttop">Function Name</td><td class="verttop">:</td><td class="verttop">Specifying actual operations, some of them are abbreviated</td></tr>
+		<tr><td class="verttop">[5]</td><td nowrap class="verttop">Parameter Delimiter (=)</td><td class="verttop">:</td><td class="verttop">Separating the Function Name and its Parameter (Value)</td></tr>
+		<tr><td class="verttop">[6]</td><td nowrap class="verttop">Parameter</td><td class="verttop">:</td><td class="verttop"> Showing a parameter value of the command</td></tr>
+		<tr><td class="verttop">[7]</td><td nowrap class="verttop">End Delimiter</td><td class="verttop">:</td><td class="verttop">The end of a command, Carriage Return (CR) and Line Feed (LF), always necessary</td></tr>
+	</table>
+	<div class="index2notes">The syntax has no spaces. Example looks like there are spaces in between, but there shouldn’t be.</div>
+	<div class="nocontentmargin">&nbsp;</div>
+
+	<span class="index2title"><a name="3.2">3.2 Command Types (from the Controller)</a></span><span class="index2backlink">(<a href="#Toc3.2">Back To Index</a>)</span>
+	<div class="index2content">"Command" is an order for the Controller to send to the Product. Command types are defined as follows.</div>
+
+		<span class="index3title"><a name="3.2.1">3.2.1 PUT Command</a></span><span class="index3backlink">(<a href="#Toc3.2.1">Back To Index</a>)</span>
+		<div class="index3content">This is to change conditions or status of functions/settings of the Product like Power, Input and Volume etc.</div>
+		<div class="index3extitle">&lt;Example&gt;</div>
+		<div class="index3ex">@MAIN:PWR=On[CR/LF]&nbsp;&nbsp;<span class="exdesc">("PUT" from the Controller to the Product)</span></div>
+		<div class="nocontentmargin">&nbsp;</div>
+
+		<span class="index3title"><a name="3.2.2">3.2.2 GET Command</a></span><span class="index3backlink">(<a href="#Toc3.2.2">Back To Index</a>)</span>
+		<div class="index3content">This is to check conditions or status of functions/settings of the Product. Power, Input, Volume and so on. The form of GET command is almost the same as PUT command, but the only difference is that its parameter is specified as “?”.</div>
+		<div class="index3extitle">&lt;Example&gt;</div>
+		<div class="index3ex">@MAIN:PWR=?[CR/LF]&nbsp;&nbsp;<span class="exdesc">("GET" from the Controller to the Product)</span></div>
+		<div class="index3ex">&nbsp;&nbsp;&ndash;&gt;&nbsp;@MAIN:PWR=On[CR/LF]&nbsp;&nbsp;<span class="exdesc">("Response" from the Product to the Controller)</span></div>
+		<div class="nocontentmargin_s">&nbsp;</div>
+
+		<div class="index3notes">The Response command from the Product has the exact same Sub Unit and Function names as specified in the GET command. The Parameter is just updated with the latest condition or status.</div>
+		<div class="index3notes">The only one character of question mark (“?”) will never be used as a parameter of PUT commands since it is always recognized as a GET command.</div>
+		<div class="nocontentmargin">&nbsp;</div>
+
+	<span class="index2title"><a name="3.3">3.3 Response Types (from the Product)</a></span><span class="index2backlink">(<a href="#Toc3.3">Back To Index</a>)</span>
+	<div class="index2content">"Response" is a feedback sent from the Product to the Controller. Response types are defined as follows.</div>
+
+		<span class="index3title"><a name="3.3.1">3.3.1 Normal Response</a></span><span class="index3backlink">(<a href="#Toc3.3.1">Back To Index</a>)</span>
+		<div class="index3content">This is a normal way to respond to the GET command from the Controller. It has the exact same Sub Unit and Function names as what are specified in the GET command. The parameter in the response indicates the current condition or state of functions or settings on the Product.</div>
+		<div class="index3extitle">&lt;Example&gt;</div>
+		<div class="index3ex">@MAIN:PWR=?[CR/LF]&nbsp;&nbsp;<span class="exdesc">("GET" from the Controller to the Product)</span></div>
+		<div class="index3ex">&nbsp;&nbsp;&ndash;&gt;&nbsp;@MAIN:PWR=On[CR/LF]&nbsp;&nbsp;<span class="exdesc">("Response" from the Product to the Controller)</span></div>
+		<div class="nocontentmargin">&nbsp;</div>
+
+		<span class="index3title"><a name="3.3.2">3.3.2 Auto Feedback Response</a></span><span class="index3backlink">(<a href="#Toc3.3.2">Back To Index</a>)</span>
+		<div class="index3content">This is to automatically notify the Controller that a condition or a status has been changed by some operations (for example, YNCA PUT Commands, IR remote control, Key operations on the Front Panel and so on) or by the update of metadata inoformation in playback etc. In the response, corresponding Sub Unit, Function names and the updated Parameter are specified. Its syntax is just the same as the one of the Normal Response.</div>
+		<div class="index3extitle">&lt;Example&gt;</div>
+		<div class="index3ex">When the Main Power is turned on by the front panel key</div>
+		<div class="index3ex">&nbsp;&nbsp;&ndash;&gt;&nbsp;@MAIN:PWR=On[CR/LF]&nbsp;&nbsp;<span class="exdesc">("Auto Feedback Response" from the Product to the Controller)</span></div>
+		<div class="nocontentmargin_s">&nbsp;</div>
+		<div class="index3extitle">&lt;Example&gt;</div>
+		<div class="index3ex">When the song title is changed in playing iPod</div>
+		<div class="index3ex">&nbsp;&nbsp;&ndash;&gt;&nbsp;@IPOD:SONG=Something New[CR/LF]&nbsp;&nbsp;<span class="exdesc">("Auto Feedback Response" from the Product to the Controller)</span></div>
+		<div class="nocontentmargin_s">&nbsp;</div>
+
+		<div class="index3notes">Auto Feedback won’t happen when the same condition or state as the current one is specified by a PUT command (in other words, sending PUT commands should not always expect to get Auto Feedback Response from the Product).</div>
+		<div class="index3notes"><b>Regarding “Initial Auto Feedback”;</b><br>Auto Feedback occurs only when the status change is detected by the Product’s system, which is based on the fact that a Sub Unit (a zone or an internal source) is ready for use. So especially at the moment when a Sub Unit is turned on (or gets ready to be used), some status are initially fed back to the Controller at a time, which is called as “Initial Auto Feedback” in YNCA protocol. Not all commands are applicable for this feature. To know which commands are enabled with Initial Auto Feedback, refer to “YNCA Command List” document and find commands that are noted with commentary like “Initial Auto Feedback is available”.</div>
+		<div class="nocontentmargin">&nbsp;</div>
+
+		<span class="index3title"><a name="3.3.3">3.3.3 Error Responses</a></span><span class="index3backlink">(<a href="#Toc3.3.3">Back To Index</a>)</span>
+		<div class="index3content">In case that the Product cannot handle with commands from the Controller for some reason, it will return Error Responses with keywords that imply why it wasn’t processed properly as follows;</div>
+
+			<span class="index4title"><a name="3.3.3.1">3.3.3.1 UNDEFINED</a></span>
+			<div class="index4content">When the command sent wasn’t defined one</div>
+			<div class="index4extitle">&lt;Example&gt;</div>
+			<div class="index4ex">&nbsp;&nbsp;&ndash;&gt;&nbsp;@UNDEFINED[CR/LF]&nbsp;&nbsp;<span class="exdesc">("Error Response" from the Product to the Controller)</span></div>
+			<div class="nocontentmargin_s">&nbsp;</div>
+
+			<span class="index4title"><a name="3.3.3.2">3.3.3.2 RESTRICTED</a></span>
+			<div class="index4content">When the command wasn’t executed on the Product for some reason</div>
+			<div class="index4extitle">&lt;Example&gt;</div>
+			<div class="index4ex">&nbsp;&nbsp;&ndash;&gt;&nbsp;@RESTRICTED[CR/LF]&nbsp;&nbsp;<span class="exdesc">("Error Response" from the Product to the Controller)</span></div>
+
+<div class="nocontentmargin_s">&nbsp;</div>
+<ul></ul>
+<hr>
+<ul></ul>
+<div class="nocontentmargin">&nbsp;</div>
+
+<span class="index1title"><a name="4">4 Other Rules</a></span><span class="index1backlink">(<a href="#Toc4">Back To Index</a>)</span>
+<div class="nocontentmargin"></div>
+
+	<div><span class="index2title"><a name="4.1">4.1 For RS-232C control</a></span><span class="index2backlink">(<a href="#Toc4.1">Back To Index</a>)</span></div>
+	<div class="nocontentmargin"></div>
+
+		<span class="index3title"><a name="4.1.1">4.1.1 Command Interval</a></span><span class="index3backlink">(<a href="#Toc4.1.1">Back To Index</a>)</span>
+		<div class="index3content">When putting commands to the Product, minimum 100 milliseconds of time interval between the previous command and the next one shall be placed.</div>
+
+	<div><span class="index2title"><a name="4.2">4.2 For Ethernet control</a></span><span class="index2backlink">(<a href="#Toc4.2">Back To Index</a>)</span></div>
+	<div class="nocontentmargin"></div>
+
+		<span class="index3title"><a name="4.2.1">4.2.1 Command Interval</a></span><span class="index3backlink">(<a href="#Toc4.2.1">Back To Index</a>)</span>
+		<div class="index3content">When putting commands to the Product, minimum 100 milliseconds of time interval between the previous command and the next one shall be placed.</div>
+
+		<span class="index3title"><a name="4.2.2">4.2.2 Connection & Disconnection</a></span><span class="index3backlink">(<a href="#Toc4.2.2">Back To Index</a>)</span>
+		<div class="index3content">TCP/IP Connection is only required (no negotiation at the higher network layers is necessary).  Similarly disconnection can by done only at the TCP/IP level.</div>
+		<div class="index3notes">Also see example sequences of <a href="#exconnection">Connection</a> and <a href="#exdisconnection">Disconnection</a> in section <a href="#5.2">5.2 Control Examples</a> for details.</div>
+		<div class="nocontentmargin_s">&nbsp;</div>
+
+			<span class="index4title"><a name="4.2.2.1">4.2.2.1 Auto Disconnection / Keep Alive</a></span>
+			<div class="index4content">The Product will automatically disconnect TCP/IP connection in about 40 seconds with no reception of commands or no status change (meaning no Auto Feedback happens) while TCP/IP connection is alive. Therefore some commands have to be issued periodically (within 40 seconds) in order to keep TCP/IP connection alive.</div>
+			<div class="nocontentmargin_s">&nbsp;</div>
+			<div class="index4content">The following is recommended to use as a keep-alive command;</div>
+			<div class="index4ex">@SYS:MODELNAME=?[CR/LF]</div>
+			<div class="nocontentmargin_s">&nbsp;</div>
+			<div class="index4notes">Also see the example sequence of <a href="#exdisconnection">Keep Alive</a> in section <a href="#5.2">5.2 Control Examples</a> for details.</div>
+			<div class="nocontentmargin_s">&nbsp;</div>
+
+			<span class="index4title"><a name="4.2.2.2">4.2.2.2 Necessity of keeping alive the connection</a></span>
+			<div class="index4content">With YNCA control on Ethernet, although it is basically assumed that TCP/IP port be kept alive, it can be once disconnected and re-connected as needed basis of sending commands unless Auto Feedback is required in the control system that you’re building. In other words, keep alive has to be done if Auto Feedback status update is a must.</div>
+			<div class="nocontentmargin">&nbsp;</div>
+
+		<span class="index3title"><a name="4.2.3">4.2.3 Port Number Change</a></span><span class="index3backlink">(<a href="#Toc4.2.3">Back To Index</a>)</span>
+		<div class="index3content">The network port number is set as 50000 by default and normally it is not necessary to be changed. But if it is required to change its setting due to issues like port-filtering or something in the network environment that you’re handling with, the procedures is as following;</div>
+
+		<div class="index3list">1. Set the new port number by @SYS:YNCAPORT=nnnnn[CR/LF] command (nnnnn: port number, ranging from 50000 to 65535).</div>
+		<div class="index3list">2. Power cycle the Product once and the new setting will be effective (meaning that it is not changed by just sending the command).</div>
+		<div class="nocontentmargin_s">&nbsp;</div>
+
+		<div class="index3notes">In using the command shown above to change the port number via Ethernet, the default number 50000 must be used at the very first time or when it is factory-default. If it is not possible for to use port #50000 even at the timing of initial setup, the alternative choices are to send that command via RS-232C or to use the command defined as YNC protocol (refer to the document separately provided) which can be done with port #80.</div>
+		<div class="nocontentmargin">&nbsp;</div>
+
+		<span class="index3title"><a name="4.2.4">4.2.4 MAC address filter</a></span><span class="index3backlink">(<a href="#Toc4.2.4">Back To Index</a>)</span>
+		<div class="index3content">It is possible to restrict the accesses of YNCA controllers to the Product via the Ethernet by setting up the MAC address filter properly.</div>
+
+		<div class="index3notes">MAC address filter setting also can be done via the Product’s menu. Refer to the owner’s manual of the Product in use</div>
+		<div class="nocontentmargin">&nbsp;</div>
+
+<div class="nocontentmargin_s">&nbsp;</div>
+<ul></ul>
+<hr>
+<ul></ul>
+<div class="nocontentmargin">&nbsp;</div>
+
+<span class="index1title"><a name="5">5 Appendix</a></span><span class="index1backlink">(<a href="#Toc5">Back To Index</a>)</span>
+<div class="nocontentmargin"></div>
+
+	<div><span class="index2title"><a name="5.1">5.1 Use of IR codes</a></span><span class="index2backlink">(<a href="#Toc5.1">Back To Index</a>)</span></div>
+	<div class="index2content">YNCA protocol has a command that allows to operate the Product by sending an IR command code as a parameter of @SYS:REMOTECODE=xxxxxxxx[CR/LF] command. (xxxxxxxx: IR code, 8 characters)</div>
+	<div class="index2content">See "REMOTECODE" command description and also find the link to the IR code list available with the Product.</div>
+	<div class="nocontentmargin"></div>
+
+	<div><span class="index2title"><a name="5.2">5.2 Control Examples</a></span><span class="index2backlink">(<a href="#Toc5.2">Back To Index</a>)</span></div>
+	<div class="index2content">Sequence diagrams are given below to help understanding what the communication should be like case by case.</div>
+	<div class="nocontentmargin"></div>
+
+	<div class="index2extitle"><a name="exconnection">&lt;Example: Connection&gt;</a></div>
+	<div class="index2ex">In case of establishing a connection to # 50000/TCP. <span class="exdesc">(For Ethernet control only)</div>
+	<pre class="index2seqex">
+
+ The Product                             The Controller
+(YNCA Server)                            (YNCA Client)
+     |                                        |
+     | SYN to destination port 50000          |
+     |<---------------------------------------| Start TCP connection
+     | SYN/ACK                                |
+     |--------------------------------------->|
+     | ACK                                    |
+     |<---------------------------------------|
+     | ACK                                    |
+     |--------------------------------------->| Connection completed
+     |                                        |
+	</pre>
+
+	<div class="nocontentmargin"></div>
+
+	<div class="index2extitle"><a name="exdisconnection">&lt;Example: Disconnection&gt;</a></div>
+	<div class="index2ex">In case of terminating TCP connection. <span class="exdesc">(For Ethernet control only)</div>
+	<pre class="index2seqex">
+
+ The Product                             The Controller
+(YNCA Server)                            (YNCA Client)
+     |                                        |
+     | FIN/ACK                                |
+     |<---------------------------------------| Quit TCP connection
+     | ACK                                    |
+     |--------------------------------------->|
+     | FIN/ACK                                |
+     |--------------------------------------->|
+     | ACK                                    |
+     |<---------------------------------------| Connection terminated
+     |                                        |
+	</pre>
+
+	<div class="nocontentmargin"></div>
+
+	<div class="index2extitle"><a name="exkeepalive">&lt;Example: Keep Alive&gt;</a></div>
+	<div class="index2ex">In case of polling the connection state (i.e. Keep Alive)&nbsp;&nbsp;<span class="exdesc">(Especially for Ethernet control)</div>
+	<pre class="index2seqex">
+
+ The Product                             The Controller
+(YNCA Server)                            (YNCA Client)
+     |                                        |
+     | @SYS:MODELNAME=?[CR/LF]                |
+     |<---------------------------------------| Send any command
+     |                                        |
+     | @SYS:MODELNAME=RX-XXXXX[CR/LF]         |
+     |--------------------------------------->| Receive response
+     |                                        |
+	</pre>
+
+<div class="nocontentmargin">&nbsp;</div>
+
+<div id="copy">&copy; 2010 Yamaha Corporation All Rights Reserved.</div>
+</body>
+</html>

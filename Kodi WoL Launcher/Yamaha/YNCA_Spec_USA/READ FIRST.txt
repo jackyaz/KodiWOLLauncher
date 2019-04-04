@@ -1,0 +1,4 @@
+1.  Open up the YNCA_Spec_USA folder.
+2.  Click on the index.html file.
+3.  This will bring up the interface.  
+
